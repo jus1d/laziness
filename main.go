@@ -6,6 +6,12 @@ import (
 )
 
 func main() {
+	// Lazy value can be evaluated excactly when it's needed
+	fmt.Println("-- Do not touch unnecessary value --")
+
+	// get first element of pair: (69, <very expensive computation, that does not actually needed>)
+	fmt.Printf("  lazy.First(lazy.From(69), lazy.Hang) => %d\n\n", lazy.First(lazy.From(69), lazy.Hang)())
+
 	// Lazy booleans
 	fmt.Println("-- Lazy Booleans --")
 
