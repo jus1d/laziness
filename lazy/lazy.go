@@ -15,6 +15,14 @@ func From[T any](value T) Lazy[T] {
 	}
 }
 
+// Traced constructs a lazy value from default types with logging, when the value touched
+func Traced[T any](value T) Lazy[T] {
+	return func() T {
+		fmt.Println("TRACE: touched value: ", value)
+		return value
+	}
+}
+
 // First returns first value of pair
 func First[T any](a, b Lazy[T]) Lazy[T] {
 	return a
@@ -35,6 +43,7 @@ func Hang[T any]() T {
 
 // Or represents logical 'or' for lazy booleans
 func Or(a, b Lazy[bool]) Lazy[bool] {
+	// TODO: if is not purely functional style tbh
 	if a() {
 		return From(true)
 	}
