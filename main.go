@@ -10,10 +10,10 @@ func main() {
 	fmt.Println("-- Do not touch unnecessary value --")
 
 	// get first element of pair: (69, <very expensive computation, that does not actually needed>)
-	fmt.Printf("  lazy.First(lazy.From(69), lazy.Hang) => %d\n\n", lazy.First(lazy.From(69), lazy.Hang)())
+	fmt.Printf("  lazy.First(lazy.From(69), lazy.Hang) => %d\n", lazy.First(lazy.From(69), lazy.Hang)())
 
 	// Lazy booleans
-	fmt.Println("-- Lazy Booleans --")
+	fmt.Println("\n-- Lazy Booleans --")
 
 	t := lazy.Traced(true)
 	f := lazy.Traced(false)
@@ -27,4 +27,12 @@ func main() {
 
 	// opposite situation, with only false, it is not obvious what is the final result of OR operation
 	fmt.Printf("  false || true  -> %t\n", lazy.Or(f, t)())
+
+	// Lazy lists
+	fmt.Println("\n-- Lazy Lists --")
+	list := lazy.ListFromSlice(1, 2, 3, 4)
+	list.Print()
+
+	list = lazy.ListFromRange(lazy.From(1), lazy.From(10))
+	list.Print()
 }
