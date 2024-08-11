@@ -23,6 +23,14 @@ func Traced[T any](value T) Lazy[T] {
 	}
 }
 
+// Hang freezed the main thread, so you can clearly see when it's touched
+func Hang[T any]() T {
+	for {
+		fmt.Println("Just hanging around...")
+		time.Sleep(500 * time.Millisecond)
+	}
+}
+
 // First returns first value of pair
 func First[T any](a, b Lazy[T]) Lazy[T] {
 	return a
@@ -31,14 +39,6 @@ func First[T any](a, b Lazy[T]) Lazy[T] {
 // Second returns second value of pair
 func Second[T any](a, b Lazy[T]) Lazy[T] {
 	return b
-}
-
-// Hang freezed the main thread, so you can clearly see when it's touched
-func Hang[T any]() T {
-	for {
-		fmt.Println("Just hanging around...")
-		time.Sleep(500 * time.Millisecond)
-	}
 }
 
 // Or represents logical 'or' for lazy booleans
