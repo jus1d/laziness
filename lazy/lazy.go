@@ -43,7 +43,8 @@ func Hang[T any]() T {
 
 // Or represents logical 'or' for lazy booleans
 func Or(a, b Lazy[bool]) Lazy[bool] {
-	// TODO: if is not purely functional style tbh
+	// yeah, in pure functional style we can't use if-elses, but since in Go there is
+	// no ternary operator (even like in Rust) - we'll use if-else
 	if a() {
 		return From(true)
 	}
