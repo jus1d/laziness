@@ -1,4 +1,6 @@
-# Some [Lazy Evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation) things implemented in Go
+# laziness
+
+Some [Lazy Evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation) things implemented in Go.
 
 ## Get Started
 
